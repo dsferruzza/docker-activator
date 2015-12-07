@@ -15,7 +15,7 @@ RUN apt-get update \
  unzip
 
 # Select Activator version
-ENV ACTIVATOR_VERSION 1.3.6
+ENV ACTIVATOR_VERSION 1.3.7
 
 # Get Activator
 RUN cd /tmp && \
