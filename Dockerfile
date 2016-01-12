@@ -16,6 +16,7 @@ RUN apt-get update \
 
 # Select Activator version
 ENV ACTIVATOR_VERSION 1.3.7
+ENV SBT_VERSION 0.13.9
 
 # Get Activator
 RUN cd /tmp && \
@@ -30,6 +31,7 @@ RUN cd /tmp && \
 RUN cd /tmp && \
  activator new init play-scala && \
  cd /tmp/init && \
+ sed -i "s/sbt.version=0.13.8/sbt.version=$SBT_VERSION/" project/build.properties
  activator about && \
  rm -fr /tmp/init
 
