@@ -31,7 +31,7 @@ RUN cd /tmp && \
 RUN cd /tmp && \
  activator new init play-scala && \
  cd /tmp/init && \
- sed -i "s/sbt.version=0.13.8/sbt.version=$SBT_VERSION/" project/build.properties
+ sed -i "s/sbt.version=0.13.8/sbt.version=$SBT_VERSION/" project/build.properties && \
  activator about && \
  rm -fr /tmp/init
 
