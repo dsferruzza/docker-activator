@@ -16,7 +16,7 @@ RUN apt-get update \
 
 # Select Activator version
 ENV ACTIVATOR_VERSION 1.3.7
-ENV SBT_VERSION 0.13.9
+ENV SBT_VERSION 0.13.11
 
 # Get Activator
 RUN cd /tmp && \
