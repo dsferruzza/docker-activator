@@ -15,7 +15,7 @@ RUN apt-get update \
  unzip
 
 # Select Activator version
-ENV ACTIVATOR_VERSION 1.3.7
+ENV ACTIVATOR_VERSION 1.3.9
 ENV SBT_VERSION 0.13.11
 
 # Get Activator
@@ -24,7 +24,7 @@ RUN cd /tmp && \
  unzip typesafe-activator-$ACTIVATOR_VERSION.zip && \
  mkdir /opt/typesafe && \
  mv /tmp/activator-dist-$ACTIVATOR_VERSION /opt/typesafe/activator-dist-$ACTIVATOR_VERSION && \
- ln -s /opt/typesafe/activator-dist-$ACTIVATOR_VERSION/activator /usr/local/bin/activator && \
+ ln -s /opt/typesafe/activator-dist-$ACTIVATOR_VERSION/bin/activator /usr/local/bin/activator && \
  rm /tmp/typesafe-activator-$ACTIVATOR_VERSION.zip
 
 # Run Activator to cache its dependencies
