@@ -8,15 +8,15 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN java -version
 RUN javac -version
 
+# Select Activator version
+ENV ACTIVATOR_VERSION 1.3.9
+ENV SBT_VERSION 0.13.11
+
 # Install tools
 RUN apt-get update \
  && apt-get install -y \
  wget \
  unzip
-
-# Select Activator version
-ENV ACTIVATOR_VERSION 1.3.9
-ENV SBT_VERSION 0.13.11
 
 # Get Activator
 RUN cd /tmp && \
@@ -25,16 +25,14 @@ RUN cd /tmp && \
  mkdir /opt/typesafe && \
  mv /tmp/activator-dist-$ACTIVATOR_VERSION /opt/typesafe/activator-dist-$ACTIVATOR_VERSION && \
  ln -s /opt/typesafe/activator-dist-$ACTIVATOR_VERSION/bin/activator /usr/local/bin/activator && \
- rm /tmp/typesafe-activator-$ACTIVATOR_VERSION.zip
-
-# Run Activator to cache its dependencies
-RUN cd /tmp && \
+ rm /tmp/typesafe-activator-$ACTIVATOR_VERSION.zip && \
+ # Run Activator to cache its dependencies
+ cd /tmp && \
  activator new init play-scala && \
  cd /tmp/init && \
  #sed -i "s/sbt.version=0.13.8/sbt.version=$SBT_VERSION/" project/build.properties && \
  activator about && \
- rm -fr /tmp/init
-
-# Slim down image
-RUN apt-get clean \
+ rm -fr /tmp/init && \
+ # Slim down image
+ apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
