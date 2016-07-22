@@ -9,8 +9,8 @@ RUN java -version
 RUN javac -version
 
 # Select Activator version
-ENV ACTIVATOR_VERSION 1.3.9
-ENV SBT_VERSION 0.13.11
+ENV ACTIVATOR_VERSION 1.3.10
+ENV SBT_VERSION 0.13.12
 
 # Install tools
 RUN apt-get update \
