@@ -38,6 +38,7 @@ RUN cd /tmp && \
  cd /tmp/init && \
  sed -i "s/sbt.version=0.13.8/sbt.version=$SBT_VERSION/" project/build.properties && \
  sed -i "s/2.11.7/$SCALA_VERSION/" build.sbt && \
+ cat build.sbt && cat project/build.properties && \
  activator about && \
  rm -fr /tmp/init && \
  # Slim down image
