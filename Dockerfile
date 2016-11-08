@@ -12,6 +12,7 @@ RUN javac -version
 ENV ACTIVATOR_VERSION 1.3.10
 ENV SBT_VERSION 0.13.12
 ENV SCALA_VERSION 2.11.8
+ENV COURSIER_VERSION 1.0.0-M14-7
 
 # Install tools
 RUN apt-get update \
@@ -30,7 +31,7 @@ RUN cd /tmp && \
  rm /tmp/typesafe-$ACTIVATOR_NAME.zip && \
  # Use coursier
  mkdir -p ~/.sbt/0.13/plugins && \
- echo "addSbtPlugin(\"io.get-coursier\" % \"sbt-coursier\" % \"1.0.0-M12-1\")" >> ~/.sbt/0.13/plugins/build.sbt && \
+ echo "addSbtPlugin(\"io.get-coursier\" % \"sbt-coursier\" % \"$COURSIER_VERSION\")" >> ~/.sbt/0.13/plugins/build.sbt && \
  # Run Activator to cache its dependencies
  cd /tmp && \
  activator new init minimal-scala && \
